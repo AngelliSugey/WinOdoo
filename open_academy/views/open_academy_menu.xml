@@ -1,0 +1,83 @@
+<odoo>
+    <data>
+        <record model="ir.actions.act_window" id="action_list_courses">
+            <field name="name">Courses</field>
+            <field name="res_model">open_academy.course</field>
+            <field name="context" eval="{'search_default_my_courses': 1}"/>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_list_sesions">
+            <field name="name">Sesions</field>
+            <field name="res_model">open_academy.sesion</field>
+            <field name="view_mode">tree,form,calendar,gantt,graph,kanban</field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_list_partner">
+            <field name="name">Contacts</field>
+            <field name="res_model">res.partner</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_list_partner_category">
+            <field name="name">Contacts Tags</field>
+            <field name="res_model">res.partner.category</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        
+    <!--Menu Principal-->
+
+        <menuitem 
+            id="menu_open_academy_main" 
+            name="Open Academy" 
+            sequence="10"
+        />
+
+        <menuitem 
+            id="menu_open_academy" 
+            parent="menu_open_academy_main" 
+            name="Open Academy" 
+            sequence="10"
+        />
+
+        <menuitem 
+            id="configuration_menu" 
+            parent="menu_open_academy_main" 
+            name="Configuration" 
+            sequence="10"
+        />
+
+        <menuitem 
+            id="menu_course" 
+            parent="menu_open_academy" 
+            name="Course" 
+            sequence="10"
+            action="action_list_courses"
+        />
+
+        <menuitem 
+            id="menu_sesion" 
+            parent="menu_open_academy" 
+            name="Sesion" 
+            sequence="10"
+            action="action_list_sesions"
+        />
+
+        <menuitem 
+            id="menu_contact" 
+            parent="configuration_menu" 
+            name="Contacts" 
+            sequence="10"
+            action="action_list_partner"
+        />
+
+        <menuitem 
+            id="menu_contact_category" 
+            parent="configuration_menu" 
+            name="Contacts Tags" 
+            sequence="10"
+            action="action_list_partner_category"
+        />
+    </data>
+
+</odoo>

@@ -1,0 +1,10 @@
+<odoo>
+    <data>
+        <record id="sesion01" model="open_academy.sesion">
+            <field name="title">Sesion1</field>
+            <field name="date">...</field>
+            <field name="duration">...</field>
+            <field name="seats">...</field>
+        </record>
+    </data>
+</odoo>

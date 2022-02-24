@@ -1,0 +1,138 @@
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="open_academy_sesion_view_tree">
+            <field name="name">open_academy.sesion.views.tree</field>
+            <field name="model">open_academy.sesion</field>
+            <field name="arch" type="xml">
+                <tree string="Session Tree" decoration-info="duration&lt;5" decoration-danger="duration&gt;15">
+                    <field name="title"/>
+                    <field name="id_course"/>
+                    <field name="date"/>
+                    <field name="duration" invisible="1"/>
+                    <field name="t_seats" widget="progressbar"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="open_academy_sesion_view_form">
+            <field name="name">open_academy.sesion.views.form</field>
+            <field name="model">open_academy.sesion</field>
+            <field name="arch" type="xml">
+                <form string="">
+                    <group colspan="4">
+                        <group string="General" colspan="2" col="2">
+                            <field name="id_course"/>
+                            <field name="title"/>
+                            <field name="id_instructor"/>
+                            <field name="active"/>
+                        </group>
+
+                        <group string="Schedule" colspan="2" col="2">
+                            <field name="title"/>
+                            <field name="date"/>
+                            <field name="duration"/>
+                            <field name="seats"/>
+                            <field name="t_seats" widget="progressbar"/>
+                        </group>
+                    </group>
+
+                    <label for="id_assistants"/>
+                    <field name="id_assistants"/>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="open_academy_sesion_view_calendar">
+            <field name="name">open_academy.sesion.views.calendar</field>
+            <field name="model">open_academy.sesion</field>
+            <field name="arch" type="xml">
+                <calendar string="Session Calendar" date_start="date" date_stop="end_date" color="id_instructor">
+                    <field name="title"/>
+                </calendar>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="session_gantt_view">
+            <field name="name">open_academy.sesion.gantt</field>
+            <field name="model">open_academy.sesion</field>
+            <field name="arch" type="xml">
+                <gantt string="Session Gantt" color="id_course"
+                       date_start="date" date_delay="hours"
+                       default_group_by='id_instructor'>
+                    <field name="title"/>
+                </gantt>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="open_academy_sesion_graph_view">
+            <field name="name">open_academy.sesion.graph</field>
+            <field name="model">open_academy.sesion</field>
+            <field name="arch" type="xml">
+                <graph string="Participations by courses">
+                    <field name="id_course"/>
+                    <field name="assistants_count" type="measure"/>
+                </graph>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="open_academy_sesion_kanban_view">
+            <field name="name">open_academy.sesion.kanban</field>
+            <field name="model">open_academy.sesion</field>
+            <field name="arch" type="xml">
+                <kanban default_group_by="id_course">
+                    <field name="color"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div
+                                    t-attf-class="oe_kanban_color_{{kanban_getcolor(record.color.raw_value)}}
+                                                  oe_kanban_global_click_edit oe_semantic_html_override
+                                                  oe_kanban_card {{record.group_fancy==1 ? 'oe_kanban_card_fancy' : ''}}">
+                                <div class="oe_dropdown_kanban">
+                                    
+                                    <div class="oe_dropdown_toggle">
+                                        <i class="fa fa-bars fa-lg"/>
+                                        <ul class="oe_dropdown_menu">
+                                            <li>
+                                                <a type="delete">Delete</a>
+                                            </li>
+                                            <li>
+                                                <ul class="oe_kanban_colorpicker"
+                                                    data-field="color"/>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="oe_clear"></div>
+                                </div>
+                                <div t-attf-class="oe_kanban_content">
+                                    Session name:
+                                    <field name="title"/>
+                                    <br/>
+                                    Start date:
+                                    <field name="date"/>
+                                    <br/>
+                                    duration:
+                                    <field name="duration"/>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="open_academy_sesion_view_search">
+            <field name="name">open_academy.sesion.views.search</field>
+            <field name="model">open_academy.sesion</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="title"/>
+                    <field name="date"/>
+                    <field name="duration"/>
+                    <field name="seats"/>
+                </search>
+            </field>
+        </record>
+        
+    </data>
+</odoo>

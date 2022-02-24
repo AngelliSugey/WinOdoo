@@ -1,0 +1,64 @@
+<odoo>
+    <data>
+
+        <!-- open_academy.course tree view -->
+        <record model="ir.ui.view" id="open_academy_course_view_tree">
+            <field name="name">open_academy.course.views.tree</field>
+            <field name="model">open_academy.course</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="title"/>
+                    <field name="id_responsable"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="open_academy_course_view_form">
+            <field name="name">open_academy.course.views.form</field>
+            <field name="model">open_academy.course</field>
+            <field name="arch" type="xml">
+                <form string="">
+                    <group colspan="4">
+                        <group colspan="2" col="2">
+                            <field name="title"/>
+                            <field name="description"/>
+                            <field name="id_responsable"/>
+                        </group>
+
+
+                        <notebook>
+                            <page string="Description" colspan="4">
+                                <field name="description" nolabel="1"/>
+                            </page>
+
+                            <page string="Sesion" colspan="4">
+                                <field name="id_sesion">
+                                    <tree string="Sesions">
+                                        <field name="title"/>
+                                        <field name="id_instructor"/>
+                                        <field name="t_seats" widget="progressbar"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="open_academy_course_view_search">
+            <field name="name">open_academy.course.views.search</field>
+            <field name="model">open_academy.course</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="title"/>
+                    <field name="description"/>
+                    <filter name="my_courses" string="My Courses" domain="[('id_responsable', '=', uid)]"/>
+                    <group string="Group By">
+                        <filter name="by_responsible" string="Responsible" context="{'group_by': 'id_responsable'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+    </data>
+</odoo>

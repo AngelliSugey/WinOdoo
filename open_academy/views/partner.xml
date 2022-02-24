@@ -1,0 +1,29 @@
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="open_academy_partner_view_form">
+            <field name="name">open_academy.partner.views.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"></field>
+            <field name="arch" type="xml">
+                <notebook position="inside">
+                    <page string="Sesion">
+                        <group>
+                            <field name="instructor"/>
+                            <field name="id_sesions"/>
+                        </group>
+                    </page>
+                </notebook>
+            </field>
+        </record>
+
+        <record model="res.partner.category" id="teacher1">
+            <field name="name">Teacher / Level 1</field>
+        </record>
+
+        <record model="res.partner.category" id="teacher2">
+            <field name="name">Teacher / Level 2</field>
+        </record>
+
+    </data>
+</odoo>
