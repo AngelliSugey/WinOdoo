@@ -8,8 +8,8 @@
                 <form string="">
                     <sheet>
                         <group>
-                            <field name="sesion_id"/>
-                            <field name="assistants_id"/>
+                            <field name="id_sesion"/>
+                            <field name="id_assistants"/>
                         </group>
 
                         <footer>
