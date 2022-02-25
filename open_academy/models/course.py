@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from datetime import timedelta
-from odoo import models, fields, api, exceptions
+from odoo import models, fields, api, exceptions, _
 
 class Course(models.Model):
     _name = 'open_academy.course'
@@ -18,11 +18,11 @@ class Course(models.Model):
         default = dict(default or {})
 
         copied_count = self.search_count(
-            [('title', '=like', u"Copy of {}%".format(self.title))])
+            [('title', '=like', _(u"Copy of {}%").format(self.title))])
         if not copied_count:
-            new_name = u"Copy of {}".format(self.title)
+            new_name = _(u"Copy of {}").format(self.title)
         else:
-            new_name = u"Copy of {} ({})".format(self.title, copied_count)
+            new_name = _(u"Copy of {} ({})").format(self.title, copied_count)
         
         default['title'] = new_name
         return super(Course, self).copy(default)
@@ -72,15 +72,15 @@ class Sesion(models.Model):
         if self.seats < 0:
             return {
                 'warning': {
-                    'title': "Incorrect 'seats' value",
-                    'message': "The number of avaliable seats may not be negative",
+                    'title': _("Incorrect 'seats' value"),
+                    'message': _("The number of avaliable seats may not be negative"),
                 },
             }
         if self.seats < len(self.id_assistants):
             return {
                 'warning': {
-                    'title': "Too many assistants",
-                    'message': "Increase seats or remove excess assistants",
+                    'title': _("Too many assistants"),
+                    'message': _("Increase seats or remove excess assistants"),
                 },
             }
 
@@ -123,5 +123,5 @@ class Sesion(models.Model):
     def _check_instructor_not_in_attendees(self):
         for r in self:
             if r.id_instructor and r. id_instructor in r.id_assistants:
-                raise exceptions.ValidationError("A session's instructor can't be an assistants")
+                raise exceptions.ValidationError(_("A session's instructor can't be an assistants"))
 

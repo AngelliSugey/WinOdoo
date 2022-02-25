@@ -13,5 +13,6 @@ class Wizard(models.TransientModel):
     assistants_id = fields.Many2many('res.partner', string="Attendees")
 
     def agregar(self):
-        self.sesion_id.assistants_id |= self.assistants_id
+        for sesion in self.sesion_id:
+            sesion.assistants_id |= self.assistants_id
         return{}

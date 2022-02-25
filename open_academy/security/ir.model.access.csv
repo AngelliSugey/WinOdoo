@@ -5,3 +5,4 @@ access_open_academy_wizard,access_open_academy_wizard,model_open_academy_wizard,
 
 course_read_all,course all,model_open_academy_course,,1,1,1,0
 sesion_read_all,sesion all,model_open_academy_sesion,,1,1,1,0
+wizard_read_all,wizard all,model_open_academy_wizard,,1,1,1,0

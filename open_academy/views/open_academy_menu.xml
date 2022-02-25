@@ -1,5 +1,36 @@
 <odoo>
     <data>
+
+        <record model="ir.ui.view" id="open_academy_wizard_view_form">
+            <field name="name">open_academy.wizard.views.form</field>
+            <field name="model">open_academy.wizard</field>
+            <field name="arch" type="xml">
+                <form string="">
+                    <sheet>
+                        <group>
+                            <field name="sesion_id"/>
+                            <field name="assistants_id"/>
+                        </group>
+
+                        <footer>
+                            <button name="agregar" type="object" string="Agregar" class="oe_highlight"/>
+                            or
+                            <button special="cancel" string="Cancel"/>
+                        </footer>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="open_academy_wizard_action" model="ir.actions.act_window">
+            <field name="name">Wizard</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">open_academy.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <field name="view_id" ref="open_academy_wizard_view_form"/>
+        </record>
+
         <record model="ir.actions.act_window" id="action_list_courses">
             <field name="name">Courses</field>
             <field name="res_model">open_academy.course</field>
@@ -68,7 +99,7 @@
             parent="menu_open_academy" 
             name="Wizard" 
             sequence="10"
-            action="launch_the_wizard"
+            action="open_academy_wizard_action"
         />
 
         <menuitem 
