@@ -39,6 +39,7 @@ class Course(models.Model):
 
 class Sesion(models.Model):
     _name = 'open_academy.sesion'
+    _description = 'Sesion'
 
     title = fields.Char(string="Title", required=True)
     date = fields.Date(default=fields.Date.today)

@@ -64,6 +64,14 @@
         />
 
         <menuitem 
+            id="menu_wizard" 
+            parent="menu_open_academy" 
+            name="Wizard" 
+            sequence="10"
+            action="launch_the_wizard"
+        />
+
+        <menuitem 
             id="menu_contact" 
             parent="configuration_menu" 
             name="Contacts" 

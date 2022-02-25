@@ -1,6 +1,7 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_open_academy_course,access_open_academy_course,model_open_academy_course,group_manager,1,1,1,0
 access_open_academy_sesion,access_open_academy_sesion,model_open_academy_sesion,group_manager,1,1,1,0
+access_open_academy_wizard,access_open_academy_wizard,model_open_academy_wizard,group_manager,1,1,1,0
 
-course_read_all,course all,model_open_academy_course,,1,0,0,0
-sesion_read_all,sesion all,model_open_academy_sesion,,1,0,0,0
+course_read_all,course all,model_open_academy_course,,1,1,1,0
+sesion_read_all,sesion all,model_open_academy_sesion,,1,1,1,0
