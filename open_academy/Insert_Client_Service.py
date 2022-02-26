@@ -1,5 +1,5 @@
 import functools
-import xmlrpclib
+import xmlrpc.client
 HOST = 'localhost'
 PORT = 8069
 DB = 'Odoo15'
@@ -8,11 +8,11 @@ PASS = 'adminodoo'
 ROOT = 'http://%s:%d/xmlrpc/' % (HOST,PORT)
 
 # 1. Login
-uid = xmlrpclib.ServerProxy(ROOT + 'common').login(DB,USER,PASS)
+uid = xmlrpc.client.ServerProxy(ROOT + 'common').login(DB,USER,PASS)
 print ("Logged in as %s (uid:%d)" % (USER,uid))
 
 call = functools.partial(
-    xmlrpclib.ServerProxy(ROOT + 'object').execute,
+    xmlrpc.client.ServerProxy(ROOT + 'object').execute,
     DB, uid, PASS)
 
 # 2. Read the sessions
